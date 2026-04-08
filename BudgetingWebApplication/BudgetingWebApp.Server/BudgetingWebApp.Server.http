@@ -1,0 +1,6 @@
+@BudgetingWebApp.Server_HostAddress = http://localhost:5206
+
+GET {{BudgetingWebApp.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

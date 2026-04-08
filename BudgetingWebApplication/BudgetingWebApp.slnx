@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="budgetingwebapp.client/budgetingwebapp.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="BudgetingWebApp.Server/BudgetingWebApp.Server.csproj" />
+</Solution>
