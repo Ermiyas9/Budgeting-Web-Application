@@ -4,6 +4,16 @@ using BudgetingWebApp.Server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// this is my local host name and pc name urs might be different if u go through an issue (FROM ERMI)
+// UPDATED FOR DEPLOYMENT: allow ONLY the Azure backend domain
+builder.Services.AddHostFiltering(options =>
+{
+    options.AllowedHosts = new[]
+    {
+        "localhost",
+    };
+});
+
 builder.Services.AddDbContext<AppDatabaseContents>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ErmiyasDb")));
 

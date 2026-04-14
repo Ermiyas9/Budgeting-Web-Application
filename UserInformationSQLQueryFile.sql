@@ -30,9 +30,9 @@ GO
 -- Create UserInformation table
 CREATE TABLE UserInformation (
    UserID INT IDENTITY(1,1) PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
+    fullEmail VARCHAR(255) NOT NULL,
     username VARCHAR(100) NOT NULL,
-    UNIQUE(email, username) -- NEED TO BE UNIQUE FOR EVERY USER
+    UNIQUE(fullEmail, username) -- NEED TO BE UNIQUE FOR EVERY USER
     );
 
 GO

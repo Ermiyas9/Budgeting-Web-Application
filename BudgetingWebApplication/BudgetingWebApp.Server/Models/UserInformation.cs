@@ -12,7 +12,7 @@ namespace BudgetingWebApp.Server.Models
         // Email cannot be null and must be unique
         [Required]
         [MaxLength(255)]
-        public string Email { get; set; } = string.Empty;
+        public string fullEmail { get; set; } = string.Empty;
 
         // Username cannot be null and must be unique
         [Required]
