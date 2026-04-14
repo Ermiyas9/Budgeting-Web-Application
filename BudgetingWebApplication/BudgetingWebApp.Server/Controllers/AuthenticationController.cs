@@ -30,8 +30,8 @@ namespace BudgetingWebApp.Server.Controllers
             {
                 user = new UserInformation
                 {
-                    Email = request.Email,
-                    UserName = request.Name,
+                    FullEmail = request.FullEmail,
+                    UserName = request.UserName,
                     GoogleSubject = request.GoogleSubject,
                     PhotoUrl = request.PhotoUrl,
                     JoinDate = DateTime.UtcNow
@@ -55,7 +55,7 @@ namespace BudgetingWebApp.Server.Controllers
             {
                 message = "Login successful.",
                 userId = user.UserId,
-                email = user.Email,
+                fullEmail = user.FullEmail,
                 userName = user.UserName,
                 photoUrl = user.PhotoUrl
             });

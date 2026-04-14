@@ -7,15 +7,15 @@ export default function LandingPage() {
 const navigate = useNavigate();
 
   const handleStart = () => {
-    const user = JSON.parse(localStorage.getItem("user") || "null");
-    const isLoggedIn = !!user;
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+  const isLoggedIn = !!user?.token;
 
     if (isLoggedIn) {
-      navigate("/dashboard");
+      navigate("/home");
     } else {
       navigate("/login");
     }
-  };
+  }
   return (
     <Center h="85vh">
       <Stack align="center" gap="xl">

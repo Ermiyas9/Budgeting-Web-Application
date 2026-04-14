@@ -5,10 +5,12 @@ import { Button, Group } from "@mantine/core";
 
 
 // this is the google auth URL i will get for each user and send it to the backend for login or registration
-const GoogleUserInfoURL = "https://www.googleapis.com/oauth2/v1/userinfo";
+const GoogleUserInfoURL =
+  "https://openidconnect.googleapis.com/v1/userinfo";
 
 // this is the backedn url for login using googgle . 
-const LoginUsingGoogleURL = `${import.meta.env.VITE_SERVER_URL}/api/auth/LoginUsingGoogleURL`;
+const LoginUsingGoogleURL =
+  `${import.meta.env.VITE_SERVER_URL}/api/Authentication/LoginUsingGoogle`;
 
 export default function LoginPage() {
  const navigate = useNavigate();
@@ -26,19 +28,23 @@ export default function LoginPage() {
 
         // here i will parse the email and get the username so that will be the unchanged username and unique for each user.
         const userName = parseEmailUsername(fullEmail);
-        const googleSubject = userData.sub;
+        const googleSubject = userData.sub || userData.id;
         const photoUrl = userData.picture;
 
         const backendResponse = await fetch(LoginUsingGoogleURL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fullemail: fullEmail,
-            username: userName,
-            googleSubject,
-            photoUrl,
-          }),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            FullEmail: fullEmail,
+            UserName: userName,
+            GoogleSubject: googleSubject,
+            PhotoUrl: photoUrl,
+        }),
         });
+
+      
 
         const loginTime = Date.now();
         const loginData = await backendResponse.json();

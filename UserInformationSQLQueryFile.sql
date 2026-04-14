@@ -4,35 +4,36 @@ USE master;
 GO
 -- Drop the database if it already exists
 -- Check if the database exists
-IF DB_ID('BudgettingAppDatabase') IS NOT NULL
+IF DB_ID('BudgettingWebAppDB') IS NOT NULL
 BEGIN
     -- Set single-user mode to disconnect all active connections
-    ALTER DATABASE BudgettingAppDatabase 
+    ALTER DATABASE BudgettingWebAppDB 
     SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
 
     -- Drop the database
-    DROP DATABASE BudgettingAppDatabase;
+    DROP DATABASE BudgettingWebAppDB;
 END
 GO
 
 -- Create the database
-CREATE DATABASE BudgettingAppDatabase
+CREATE DATABASE BudgettingWebAppDB
 GO
 
 -- Use the database
-USE BudgettingAppDatabase
+USE BudgettingWebAppDB
 GO
 
 -- Drop tables if they exist
-IF OBJECT_ID('UserInformation', 'U') IS NOT NULL DROP TABLE Likes
+IF OBJECT_ID('UserInformation', 'U') IS NOT NULL DROP TABLE UserInformation
 GO
 
 -- Create UserInformation table
 CREATE TABLE UserInformation (
    UserID INT IDENTITY(1,1) PRIMARY KEY,
-    fullEmail VARCHAR(255) NOT NULL,
-    username VARCHAR(100) NOT NULL,
-    UNIQUE(fullEmail, username) -- NEED TO BE UNIQUE FOR EVERY USER
+   FullEmail VARCHAR(255) NOT NULL,
+   Username VARCHAR(100) NOT NULL,
+   GoogleSubject VARCHAR(100) NULL, 
+   UNIQUE(FullEmail, Username, GoogleSubject) -- NEED TO BE UNIQUE FOR EVERY USER
     );
 
 GO
@@ -40,3 +41,8 @@ GO
 
 SELECT * FROM UserInformation
 
+SELECT DB_NAME() AS CurrentDB;
+
+SELECT * FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_NAME = 'UserInformation';
+DROP TABLE UserInformation;

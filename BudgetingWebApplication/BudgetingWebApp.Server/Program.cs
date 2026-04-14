@@ -1,33 +1,27 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using BudgetingWebApp.Server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// this is my local host name and pc name urs might be different if u go through an issue (FROM ERMI)
-// UPDATED FOR DEPLOYMENT: allow ONLY the Azure backend domain
-builder.Services.AddHostFiltering(options =>
+builder.Services.AddCors(options =>
 {
-    options.AllowedHosts = new[]
+    options.AddPolicy("AllowAll", policy =>
     {
-        "localhost",
-    };
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
 
 builder.Services.AddDbContext<AppDatabaseContents>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ErmiyasDb")));
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -35,11 +29,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowAll");
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.MapFallbackToFile("/index.html");
 
 app.Run();
