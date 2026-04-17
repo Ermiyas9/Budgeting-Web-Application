@@ -38,11 +38,18 @@ CREATE TABLE UserInformation (
 
 GO
 
+--SELECT DB_NAME() AS CurrentDB;
 
-SELECT * FROM UserInformation
+--SELECT * FROM INFORMATION_SCHEMA.TABLES
+--WHERE TABLE_NAME = 'UserInformation';
+--DROP TABLE UserInformation;
 
-SELECT DB_NAME() AS CurrentDB;
 
-SELECT * FROM INFORMATION_SCHEMA.TABLES
-WHERE TABLE_NAME = 'UserInformation';
-DROP TABLE UserInformation;
+--we need a table that stores the reciept information like
+--reciept number, reciept total amount , the store name that the items purchased 
+--the data and time or the puchase
+
+--we also need a database for busgeting according to the specific input users gave us
+--like if the reciept is grocery, closing(Zara, H&M , dining out(restorant , clubbing), Transportation(Bus, gas), housing(rent, morgage) 
+--utilities(electricity , wife, mobbile expense, Insurance, Health&fitness, taxes, travel(air ticket) ,Education, Kids(family expense)
+--pets expense , furniture 

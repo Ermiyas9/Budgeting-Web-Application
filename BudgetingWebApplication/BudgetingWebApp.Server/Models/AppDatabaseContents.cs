@@ -12,7 +12,11 @@ namespace BudgetingWebApp.Server.Models
         // user name will be the email id of the user without @domain part this is the class that we created in Models/User.cs
 
         public DbSet<UserInformation> UserInformation { get; set; }
-       
+
+        public DbSet<ExpenseCatagory> ExpenseCatagory { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
+
+
 
 
         // here I am doing is creating a constructor for the AppDatabaseContents class that takes in DbContextOptions and passes it to the base class constructor
