@@ -1,3 +1,5 @@
+import { Button } from "@mantine/core"
+import { ScanIcon } from "lucide-react"
 import { Outlet, Link } from "react-router-dom"
 
 export default function Layout() {
@@ -13,7 +15,17 @@ export default function Layout() {
           alignItems: "center"
         }}
       >
-        <h2 style={{ margin: 0 }}>Budgeting App</h2>
+        <h2 style={{ margin: 0 }}>Budgeting Pal</h2>
+
+       <Button
+          variant="outline"
+          color="white"
+          bg="green"
+          leftSection={<ScanIcon size={24} />}
+        >
+          Scan
+        </Button>
+
 
         <nav style={{ display: "flex", gap: "15px" }}>
           <Link to="/">Landing</Link>

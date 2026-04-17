@@ -1,5 +1,6 @@
-import { Button, Center, Stack, Text, Title } from "@mantine/core";
+import { Button, Center, Stack, Text, Title, Image } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
+import Smiley from "../assets/smilyEmoji.png";
 
 
 export default function LandingPage() {
@@ -20,18 +21,26 @@ const navigate = useNavigate();
     <Center h="85vh">
       <Stack align="center" gap="xl">
         <Stack align="center" gap="xs">
+          <Image
+          src={Smiley}
+          alt="Smily Image"
+          w={150}
+          h={150}
+          fit="contain"
+        />
+
           <Title size={40} fw={900} style={{ whiteSpace: "nowrap" }}>
-            Budgeting App
+            Easy budgeting at your fingertips
           </Title>
 
           <Text fw={800} c="dimmed" tt="uppercase">
-            Track your expenses. Manage your money.
+           Save time and money with our scan and save feature!
           </Text>
         </Stack>
 
         <Stack align="center" gap="md" w={350}>
           {/* Start Button */}
-          <Button onClick={handleStart} size="lg" variant="filled" fullWidth>
+          <Button onClick={handleStart} size="lg" color="green" fullWidth>
             Start Budgeting
           </Button>
         </Stack>

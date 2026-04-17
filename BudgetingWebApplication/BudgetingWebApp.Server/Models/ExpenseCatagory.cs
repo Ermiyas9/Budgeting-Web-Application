@@ -2,7 +2,7 @@
 {
     public class ExpenseCatagory
     {
-        public int CategoryIdExpenseCatagoryID { get; set; }
+        public int ExpenseCatagoryID { get; set; }
         public string ExpenseName { get; set; } = string.Empty;
 
         // this cant be null so when user creates a catagory we will assign for that user 
